@@ -45,23 +45,23 @@ let score = 0;
 
 //control the snake
 
-let dir;
+let d;
 
 document.addEventListener("keydown",direction);
 
 function direction(event){
     start.play();
     let key = event.keyCode;
-    if( key == 37 && dir != "RIGHT"){
+    if( key == 37 && d != "RIGHT"){
 
         d = "LEFT";
-    }else if(key == 38 && dir != "DOWN"){
+    }else if(key == 38 && d != "DOWN"){
         d = "UP";
 
-    }else if(key == 39 && dir != "LEFT"){
+    }else if(key == 39 && d != "LEFT"){
         d = "RIGHT";
 
-    }else if(key == 40 && dir != "UP"){
+    }else if(key == 40 && d != "UP"){
         d = "DOWN";
 
     }
@@ -95,10 +95,10 @@ function draw(){
     let snakeY = snake[0].y;
     
     // which direction
-    if( dir == "LEFT") snakeX -= box;
-    if( dir == "UP") snakeY -= box;
-    if( dir == "RIGHT") snakeX += box;
-    if( dir == "DOWN") snakeY += box;
+    if( d == "LEFT") snakeX -= box;
+    if( d == "UP") snakeY -= box;
+    if( d == "RIGHT") snakeX += box;
+    if( d == "DOWN") snakeY += box;
     
     // if the snake eats the food
     if(snakeX == food.x && snakeY == food.y){
@@ -108,7 +108,7 @@ function draw(){
             x : Math.floor(Math.random()*17+1) * box,
             y : Math.floor(Math.random()*15+3) * box
         }
-        // we don't remove the tail
+        //don't remove the tail
     }else{
         // remove the tail
         snake.pop();
